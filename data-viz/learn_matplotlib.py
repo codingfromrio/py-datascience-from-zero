@@ -9,4 +9,6 @@ plt.title("Nominal GDP")
 
 plt.ylabel("Billions of $")
 
+plt.savefig('nominal_gdp')
+
 plt.show()
