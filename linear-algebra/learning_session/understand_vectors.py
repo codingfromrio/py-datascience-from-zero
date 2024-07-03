@@ -117,3 +117,46 @@ def sum_of_squares(v: Vector) -> float:
     return dot(v, v)
 
 assert sum_of_squares([1,2,3]) == 14
+
+# calculo da magnitude 
+# ou comprimento do vetor (reta que é traçada no gráfico entre as coordenadas)
+# o calculo é feito através da teorema de pitágoras, 
+# já que a reta é a hipotenusa de um triangulo retangulo
+# caso o vetor tenha mais que duas coordenadas, 
+# é só incluir a soma do quadrado de todos os pontos
+# transformando no calculo da distância euclidiana.
+import math
+
+def magnitude(v: Vector) -> float:
+    """
+    retorna o comprimento do vetor.
+    """
+
+    return math.sqrt(sum_of_squares(v))
+
+assert magnitude([3,4]) == 5
+
+# calculo da distância entre vetores, 
+# a distância entre vetores é dada pela raiz quadrada do somatório dos quadrados
+# da diferença entre os elementos correspondentes de cada vetor.
+
+def squared_distance(v: Vector, w: Vector) -> float:
+    """
+    Calcula o quadrado da diferença entre todos os pares correspondentes
+    dos vetores
+    (v_i-w_i)^2 + ... (v_n - w_n)^2
+    """
+    return sum_of_squares(substract(v, w))
+
+def distance(v: Vector, w: Vector) -> float:
+    """
+    Calcula a raiz do quadrado da diferença entre todos os pares correspondentes
+    dos vetores.
+    """
+    return math.sqrt(squared_distance(v, w))
+
+# ou ..
+def distance(v: Vector, w: Vector) -> float:
+    return magnitude(substract(v, w))
+
+ 
